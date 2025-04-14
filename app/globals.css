@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 221 83% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Font imports for the advanced styling options */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Lato:wght@400;700;900&family=Merriweather:wght@400;700;900&family=Montserrat:wght@400;500;600;700;900&family=Open+Sans:wght@400;600;700;800&family=Playfair+Display:wght@400;600;700;900&family=Roboto:wght@400;500;700;900&family=Source+Code+Pro:wght@400;600;700&display=swap");
+
+.cv-preview {
+  @apply print:shadow-none print:p-0 print:m-0;
+  width: 100%;
+  min-height: 29.7cm;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Visual editor styles */
+.markdown-section {
+  @apply relative border border-zinc-200 dark:border-zinc-700 rounded-md p-3 mb-2;
+}
+
+.markdown-section-h1 {
+  @apply border-l-4 border-blue-500;
+}
+
+.markdown-section-h2 {
+  @apply border-l-4 border-green-500;
+}
+
+.markdown-section-h3 {
+  @apply border-l-4 border-purple-500;
+}
+
+.markdown-section-p {
+  @apply border-l-4 border-gray-300;
+}
+
+.markdown-section-ul {
+  @apply border-l-4 border-amber-500;
+}
+
+.markdown-section-ol {
+  @apply border-l-4 border-orange-500;
+}
+
+.markdown-section-blockquote {
+  @apply border-l-4 border-teal-500;
+}
+
+.markdown-section-code {
+  @apply border-l-4 border-red-500;
+}
+
+.markdown-section-handle {
+  @apply absolute left-2 top-2 cursor-grab active:cursor-grabbing p-1 rounded hover:bg-zinc-100 dark:hover:bg-zinc-700;
+}
+
+.markdown-section-type {
+  @apply absolute right-2 top-2 text-xs font-medium text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-700 px-2 py-1 rounded;
+}
+
+/* v0.dev specific styles */
+.v0-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr;
+  height: 100vh;
+}
+
+.v0-sidebar {
+  @apply border-r border-zinc-200 dark:border-zinc-800;
+}
+
+.v0-editor {
+  @apply border-r border-zinc-200 dark:border-zinc-800;
+}
+
+.v0-preview {
+  @apply bg-zinc-50 dark:bg-zinc-900/20;
+}
+
+.v0-header {
+  @apply h-12 border-b border-zinc-200 dark:border-zinc-800 flex items-center px-4;
+}
+
+.v0-file-explorer {
+  @apply text-sm;
+}
+
+.v0-file-explorer-item {
+  @apply flex items-center py-1 px-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-md;
+}
+
+.v0-file-explorer-item.active {
+  @apply bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400;
+}
+
+.v0-code-line {
+  @apply flex;
+}
+
+.v0-line-number {
+  @apply text-zinc-400 w-8 text-right pr-2 select-none;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .cv-preview,
+  .cv-preview * {
+    visibility: visible;
+  }
+
+  .cv-preview {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: white !important;
+    color: black !important;
+  }
+}
